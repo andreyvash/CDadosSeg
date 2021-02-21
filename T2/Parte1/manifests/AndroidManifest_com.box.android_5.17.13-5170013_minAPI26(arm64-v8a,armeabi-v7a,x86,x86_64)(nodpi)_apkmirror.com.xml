@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" android:installLocation="auto" package="com.box.android" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <queries>
+        <package android:name="com.microsoft.windowsintune.companyportal"/>
+    </queries>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/box_app_name" android:largeHeap="true" android:name="com.box.android.application.BoxApplication" android:networkSecurityConfig="@xml/network_security_config" android:requestLegacyExternalStorage="true" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/ContentSdk" android:uiOptions="splitActionBarWhenNarrow">
+        <meta-data android:name="pspdfkit_license_key" android:value="@string/PSPDFKIT_LICENSE_KEY"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="android.content.APP_RESTRICTIONS" android:resource="@xml/app_restrictions"/>
+        <activity android:launchMode="singleTask" android:name="com.box.android.activities.login.WopiOAuthActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTask" android:name="com.box.android.activities.login.CustomOAuthActivity" android:theme="@style/Theme.Box.Base" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="login" android:scheme="boxlogin"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name="androidx.biometric.DeviceCredentialHandlerActivity" android:theme="@style/DeviceCredentialHandlerTheme"/>
+        <activity android:launchMode="singleTask" android:name="com.box.android.activities.tasks.SingleTaskActivity" android:theme="@style/Theme.Box.Toolbar.Blue"/>
+        <activity android:launchMode="singleTask" android:name="com.box.android.activities.tasks.TaskCollaboratorsActivity" android:theme="@style/Theme.Box.Toolbar.Blue"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.MainPhone" android:theme="@style/Theme.Box" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION"/>
+                <action android:name="android.provider.MediaStore.RECORD_SOUND"/>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.Navigation" android:theme="@style/Theme.Box" android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION"/>
+                <action android:name="android.provider.MediaStore.RECORD_SOUND"/>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:name="com.box.android.activities.CopyOrMoveActivity" android:theme="@style/Theme.Box"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.box.android.activities.UploadToFolderActivity" android:theme="@style/Theme.Box.Transparent"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.preview.BoxNotesActivity" android:theme="@style/Theme.Box" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.box.android.activities.addcontent.UploadActivity" android:theme="@style/Theme.Box.Dialog" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.box.android.activities.SwitchingAccountDialogActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:name="com.box.android.activities.filepicker.LocalFolderChooser" android:theme="@style/Theme.Box"/>
+        <activity android:name="com.box.android.activities.filepicker.SDFileExplorer" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTask" android:name="com.box.android.activities.GoogleAlphaGroupDialogActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:launchMode="singleTop" android:name="com.box.android.activities.tasks.RenameTaskActivity" android:theme="@style/Theme.Box.Dialog" android:windowSoftInputMode="adjustPan|stateVisible"/>
+        <activity android:excludeFromRecents="true" android:name="com.box.android.activities.IntentChooserActivity" android:taskAffinity="" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:name="com.box.android.activities.InfoDialogActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:excludeFromRecents="true" android:name="com.box.android.activities.UploadOverwriteDialogActivity" android:taskAffinity="@string/commonProviderAuthority" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:name="com.box.android.activities.WarningDialogActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:name="com.box.android.activities.TOSActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:name="com.box.android.activities.LogoutWarningActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:launchMode="singleTop" android:name="com.box.android.activities.ExpiredVersionDialogActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.DeleteItemsActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:name="com.box.android.activities.addcontent.CreateFolderTaskActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:name="com.box.android.activities.addcontent.CreateDocumentTaskActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.box.android.activities.OpenFile" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.CreatePincodeActivity" android:theme="@style/Theme.Box.Dialog" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:label="" android:launchMode="singleTop" android:name="com.box.android.activities.Pincode" android:taskAffinity="com.box.android.activities.Pincode" android:theme="@style/Theme.Box" android:windowSoftInputMode="stateAlwaysVisible|adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/box_app_name" android:launchMode="singleTop" android:name="com.box.android.activities.login.SplashScreenActivity" android:theme="@style/Theme.Launcher" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="m.box.com" android:scheme="box-login"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.box.android.activities.login.GenericEmmConfigManagementActivity" android:theme="@style/Theme.Translucent" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="com.emm.management_config_action"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.box.android.activities.login.BoxGenericEmmVerifyActivity" android:theme="@style/Theme.Translucent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.box.android.activities.login.BoxThirdPartyAuthenticatorActivity" android:theme="@style/Theme.Box.NoActionBar" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="com.box.android.action.AUTHENTICATE_VIA_BOX_APP"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.box.android.activities.RefreshDialogActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:launchMode="singleTop" android:name="com.box.android.activities.login.WelcomeTourActivity" android:theme="@style/Theme.Box.White" android:windowSoftInputMode="adjustResize"/>
+        <activity android:launchMode="singleTop" android:name="com.box.android.activities.AutoContentUploadPaywallActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:launchMode="singleTop" android:name="com.box.android.activities.ConfigurationOptionsActivity" android:theme="@style/Theme.Box.TranslateActivityUpDown" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.login.SplashScreenFromWidgetActivity" android:theme="@style/Theme.Box.White" android:windowSoftInputMode="adjustResize"/>
+        <activity android:enabled="true" android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:launchMode="singleInstance" android:name="com.box.android.activities.NotificationInterceptorActivity" android:stateNotNeeded="true" android:theme="@style/Theme.Box.NoDisplay"/>
+        <activity android:enabled="true" android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:name="com.box.android.activities.BoxNotesInterceptorActivity" android:stateNotNeeded="true" android:theme="@style/Theme.Box.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="*.box.com" android:pathPattern="/notes/..*" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPattern="/notes/..*" android:scheme="http"/>
+                <data android:host="*.box.net" android:pathPattern="/notes/..*" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPattern="/notes/..*" android:scheme="http"/>
+            </intent-filter>
+        </activity>
+        <activity android:enabled="true" android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:name="com.box.android.activities.share.SharedLinkInterceptorActivity" android:stateNotNeeded="true" android:theme="@style/Theme.Box.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="*.box.net" android:pathPrefix="/shared/" android:scheme="http"/>
+                <data android:host="*.box.net" android:pathPrefix="/shared/" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/shared/" android:scheme="http"/>
+                <data android:host="*.box.com" android:pathPrefix="/shared/" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPrefix="/s/" android:scheme="http"/>
+                <data android:host="*.box.net" android:pathPrefix="/s/" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/s/" android:scheme="http"/>
+                <data android:host="*.box.com" android:pathPrefix="/s/" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPrefix="/v/" android:scheme="http"/>
+                <data android:host="*.box.net" android:pathPrefix="/v/" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/v/" android:scheme="http"/>
+                <data android:host="*.box.com" android:pathPrefix="/v/" android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="*" android:scheme="boxopenshared"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="sharedlink"/>
+                <data android:scheme="boxapp"/>
+                <data android:scheme="boxemm"/>
+            </intent-filter>
+        </activity>
+        <activity android:enabled="true" android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:name="com.box.android.activities.share.SharedLinkStopScreenActivity" android:stateNotNeeded="true" android:theme="@style/Theme.Box"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:name="com.box.android.activities.IntentProcessorSend" android:stateNotNeeded="true" android:taskAffinity="com.box.android.activities.IntentProcessorSend" android:theme="@style/Theme.Box.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:name="android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION"/>
+                <data android:mimeType="media/*"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="video/*"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="application/*"/>
+                <data android:mimeType="text/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:name="com.box.android.activities.IntentProcessorGetContent" android:stateNotNeeded="true" android:taskAffinity="com.box.android.activities.IntentProcessorGetContent" android:theme="@style/Theme.Box.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.OPENABLE"/>
+                <data android:mimeType="*/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:launchMode="singleTop" android:name="com.box.android.activities.filepicker.MainFilePicker" android:taskAffinity="com.box.android.activities.IntentProcessorGetContent" android:theme="@style/Theme.Box">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:name="com.box.android.activities.MainShortcutPickerPhone" android:theme="@style/Theme.Box.Base"/>
+        <activity android:name="com.box.android.activities.AutoContentUploadFolderPickerActivity" android:theme="@style/Theme.Box.Base"/>
+        <service android:enabled="true" android:name="com.box.android.sync.AuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator"/>
+        </service>
+        <service android:exported="false" android:name="com.box.android.services.AutoContentUploadService"/>
+        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="false"/>
+        <service android:name="com.box.android.services.FirebaseTokenHandlerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.box.android.services.FirebaseMessagingListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.box.android.activities.UserPreferenceDialogActivity" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:icon="@drawable/icon_shortcut_home" android:label="@string/Box_Shortcut" android:name="com.box.android.activities.CreateShortcutActivity" android:theme="@style/Theme.Box">
+            <intent-filter android:icon="@drawable/icon_shortcut_home" android:label="@string/Box_Shortcut" android:logo="@drawable/icon_shortcut_home">
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:name="com.box.android.activities.ManageShortcutActivity" android:taskAffinity="com.box.android.activities.ManageShortcutActivity" android:theme="@style/Theme.Box.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_MAIN"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="*" android:scheme="boxopendirect"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="file"/>
+                <data android:host="folder"/>
+                <data android:scheme="boxapp"/>
+                <data android:scheme="boxemm"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:name="com.box.android.activities.WebUrlsInterceptorActivity" android:theme="@style/Theme.Box.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="*.box.com" android:pathPattern="/file/..*" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPattern="/file/..*" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPattern="/folder/..*" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPattern="/folder/..*" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/notifications" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPrefix="/notifications" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/tasks/sent" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/tasks/assigned" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/recents" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPrefix="/recents" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/favorites" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPrefix="/favorites" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPattern="/collection/..*" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPattern="/collection/..*" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/collections" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPrefix="/collections" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/files/favorites" android:scheme="https"/>
+                <data android:host="*.box.net" android:pathPrefix="/files/favorites" android:scheme="https"/>
+                <data android:host="*.box.com" android:pathPrefix="/diagnosis" android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:name="com.box.android.activities.SwitchAccountActivity" android:stateNotNeeded="true" android:theme="@style/Theme.Box.Dialog"/>
+        <activity android:name="com.box.android.activities.CommentsActivity" android:theme="@style/TitleLess" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.SettingsActivity" android:theme="@style/Theme.Box.AppCompat"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.BoxItemInfoActivity" android:theme="@style/Theme.Box"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.preview.PreviewActivity" android:theme="@style/Theme.Box.Preview" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.preview.PreviousVersionPreviewActivity" android:theme="@style/Theme.Box.Preview" android:windowSoftInputMode="adjustResize"/>
+        <activity android:label="@string/box_sharesdk_title_share_link" android:launchMode="singleTop" android:name="com.box.android.activities.share.UsxShareActivity" android:theme="@style/ShareThemeUSX" android:windowSoftInputMode="adjustResize"/>
+        <activity android:label="@string/box_sharesdk_shared_with" android:launchMode="singleTop" android:name="com.box.android.activities.share.UsxCollaborationsActivity" android:theme="@style/ShareThemeUSX" android:windowSoftInputMode="adjustResize"/>
+        <activity android:label="@string/box_sharesdk_invite_collaborators" android:launchMode="singleTop" android:name="com.box.android.activities.share.UsxInviteCollaboratorsActivity" android:theme="@style/ShareThemeUSX" android:windowSoftInputMode="adjustResize"/>
+        <service android:exported="false" android:name="com.box.android.activities.share.CopyLinkService"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.box.android.activities.CommentsReplyActivity" android:theme="@style/Theme.Transparent.NonFloating"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.box.android.activities.EmailSupportActivity" android:theme="@style/Theme.Box"/>
+        <activity android:label="@string/box_sharesdk_shared_with" android:name="com.box.android.usx.activities.BoxCollaborationsActivity" android:theme="@style/ShareTheme"/>
+        <activity android:label="@string/box_sharesdk_invite_collaborators" android:name="com.box.android.usx.activities.BoxInviteCollaboratorsActivity" android:theme="@style/ShareTheme"/>
+        <activity android:name="com.box.android.usx.activities.BoxUsxActivity" android:theme="@style/ShareThemeUSX"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:label="" android:launchMode="singleTop" android:name="com.box.android.activities.BoxMAMAuthActivity"/>
+        <meta-data android:name="com.microsoft.intune.mam.aad.ClientID" android:value="dc4ae7e8-b3fa-41d6-aba3-8dc5d31d4339"/>
+        <activity android:exported="true" android:name="com.microsoft.identity.client.BrowserTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="com.box.android" android:path="@string/app_sig" android:scheme="msauth"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.box.android.analytics.AnalyticsService"/>
+        <meta-data android:name="to.dualscreen" android:value="true"/>
+        <provider android:authorities="@string/commonProviderAuthority" android:exported="false" android:name="com.box.android.contentprovider.StubProvider" android:syncable="true"/>
+        <receiver android:name="com.box.android.receiver.BoxDeviceConfigChangeInfoReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.box.android.receiver.EmmApplicationStatusChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="com.box.android.receiver.BoxBootCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.box.android.receiver.ReferralReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.box.android.receiver.CommentsReplyReceiver"/>
+        <receiver android:exported="false" android:name="com.box.android.receiver.DelayedNotificationReceiver"/>
+        <provider android:authorities="@string/docProviderAuthority" android:enabled="false" android:exported="true" android:grantUriPermissions="true" android:name="com.box.android.providers.BoxDocumentsProvider" android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER"/>
+            </intent-filter>
+        </provider>
+        <service android:enabled="true" android:name="com.box.android.clientadmin.AppConnectConfigService" android:permission="com.mobileiron.CONFIG_PERMISSION">
+            <intent-filter>
+                <action android:name="com.mobileiron.HANDLE_CONFIG"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.box.android.services.JobRetryIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:name="com.box.android.activities.FilterSearchResultsActivity" android:theme="@style/BrowseTheme"/>
+        <provider android:authorities="@string/fileProviderAuthority" android:exported="false" android:grantUriPermissions="true" android:name="com.box.android.providers.LegacyCompatFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths"/>
+        </provider>
+        <provider android:authorities="@string/emmConfigManagementProviderAuthority" android:exported="false" android:name="com.box.android.providers.EMMConfigManagementProvider"/>
+        <provider android:authorities="@string/uploadSyncProviderAuthority" android:enabled="true" android:exported="false" android:name="com.box.android.contentprovider.UploadSyncContentProvider"/>
+        <receiver android:exported="false" android:name="com.box.android.services.JobRetryIntentService$JobRetryBroadcastReceiver"/>
+        <receiver android:exported="false" android:name="com.box.android.observability.DiagnosticsNotificationHandler"/>
+        <activity android:label="" android:name="com.box.androidsdk.preview.BoxPreviewActivity" android:theme="@style/box_previewsdk_theme"/>
+        <service android:enabled="true" android:exported="false" android:name="com.box.androidsdk.preview.services.MediaPlayerService"/>
+        <activity android:name="com.box.androidsdk.comments.fragment.CommentsFragmentActivity" android:theme="@style/TitleLess" android:windowSoftInputMode="adjustPan"/>
+        <activity android:label="@string/box_browsesdk_title" android:name="com.box.androidsdk.browse.activities.BoxBrowseFileActivity" android:theme="@style/BrowseTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:label="@string/box_browsesdk_title" android:name="com.box.androidsdk.browse.activities.BoxBrowseFolderActivity" android:theme="@style/BrowseTheme"/>
+        <activity android:label="Filter Search Results" android:name="com.box.androidsdk.browse.activities.FilterSearchResults" android:theme="@style/BrowseTheme"/>
+        <activity android:launchMode="singleInstance" android:name="com.box.androidsdk.content.auth.BlockedIPErrorActivity"/>
+        <provider android:authorities="com.box.android.box.androidsdk.provider" android:exported="false" android:name="com.box.androidsdk.content.utils.BoxContentProvider"/>
+        <activity android:configChanges="orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.pspdfkit.document.printing.PrintActivity"/>
+        <provider android:authorities="com.box.android.com.pspdfkit.PSPDFKitInitializationProvider" android:exported="false" android:name="com.pspdfkit.PSPDFKitInitializationProvider"/>
+        <provider android:authorities="com.box.android.pdf.assets" android:exported="false" android:name="com.pspdfkit.media.AssetsContentProvider"/>
+        <provider android:authorities="com.box.android.pdf.share" android:exported="true" android:grantUriPermissions="true" android:name="com.pspdfkit.document.sharing.DocumentSharingProvider"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:exported="false" android:launchMode="singleTask" android:name="com.microsoft.identity.common.internal.providers.oauth2.AuthorizationActivity"/>
+        <activity android:name="com.microsoft.identity.client.internal.controllers.BrokerActivity"/>
+        <provider android:authorities="com.box.android.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.box.android.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <service android:exported="true" android:label="" android:name="com.microsoft.intune.mam.client.notification.MAMNotificationReceiverService"/>
+        <service android:exported="false" android:label="" android:name="com.microsoft.intune.mam.client.service.MAMBackgroundService"/>
+        <service android:exported="false" android:label="" android:name="com.microsoft.intune.mam.client.service.MAMBackgroundJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:name="com.microsoft.intune.mam.client.service.MAMBackgroundReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:multiprocess="true" android:name="com.microsoft.intune.mam.client.app.offline.OfflineStartupBlockedActivity"/>
+        <activity android:exported="false" android:multiprocess="true" android:name="com.microsoft.intune.mam.client.app.offline.OfflineRestartRequiredActivity"/>
+        <activity android:exported="false" android:multiprocess="true" android:name="com.microsoft.intune.mam.client.app.startup.MAMStartupActivity"/>
+        <activity android:exported="false" android:name="com.microsoft.intune.mam.client.app.resolver.MAMResolverActivity" android:taskAffinity="" android:theme="@style/MAMDialogTheme"/>
+        <activity android:exported="false" android:multiprocess="true" android:name="com.microsoft.intune.mam.client.app.offline.OfflineInstallCompanyPortalDialogActivity" android:theme="@style/MAMDialogTheme"/>
+        <activity android:exported="false" android:name="com.microsoft.intune.mam.client.app.offline.OfflineNotifyWipeActivity"/>
+        <activity android:exported="false" android:label="ComplianceBlock" android:name="com.microsoft.intune.mam.client.app.startup.MAMComplianceBlockActivity"/>
+        <receiver android:name="com.microsoft.intune.mam.client.app.ApplicationUpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

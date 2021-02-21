@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" package="com.match.android.matchmobile" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <permission android:name="com.match.android.matchmobile.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <permission android:name="com.match.android.matchmobile.permission.RECEIVE_ADM_MESSAGE" android:protectionLevel="signature"/>
+    <uses-feature android:name="android.hardware.location" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+    <uses-feature android:name="android.hardware.microphone" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.match.android.matchmobile.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="com.match.android.matchmobile.permission.RECEIVE_ADM_MESSAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:fullBackupContent="false" android:icon="@mipmap/icon" android:label="@string/app_name" android:name="com.match.matchlocal.appbase.MatchApplication" android:networkSecurityConfig="@xml/network_security_config" android:roundIcon="@mipmap/icon_round" android:supportsRtl="true" android:theme="@style/AppTheme">
+        <activity android:name="com.match.matchlocal.flows.landing.EvilHackCloseActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="com.match.matchlocal.flows.branding.BrandingActivity" android:screenOrientation="portrait" android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/registration" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/messages" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/message" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/profilereview" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/rating" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/matches" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/whoviewedme" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/myProfileView" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/likes" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/premiumbenefits" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/matchTalks" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/events" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/eventDetails" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/messageRC" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/likesRC" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/trendingtopics" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/deeplink/expertsconversation" android:scheme="https"/>
+                <data android:host="crmappdirect.services.match.com" android:pathPrefix="/" android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="com.match.matchlocal.flows.landing.LandingActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.match.matchlocal.flows.edit.IdentificationActivity" android:parentActivityName="com.match.matchlocal.flows.edit.EditProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/comm_title_history" android:launchMode="singleTask" android:name="com.match.matchlocal.flows.discount.DiscountActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="@string/title_activity_login" android:name="com.match.matchlocal.flows.login.LoginActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="@string/title_activity_onboarding" android:name="com.match.matchlocal.flows.registration.RegistrationActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme.ActivityOnboardingTheme" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:label="Forgot Password" android:name="com.match.matchlocal.flows.login.forgotpassword.ForgotPasswordActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="@string/title_activity_onboarding" android:name="com.match.matchlocal.flows.newonboarding.profile.NewOnboardingActivity" android:screenOrientation="portrait" android:theme="@style/RegistrationTheme" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:label="@string/title_profile" android:launchMode="standard" android:name="com.match.matchlocal.flows.profile.ProfileG4Activity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_report_a_concern" android:name="com.match.matchlocal.flows.profile.ReportConcernActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_report_a_concern" android:name="com.match.matchlocal.flows.profile.ReportConcernMoreActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_gallery" android:name="com.match.matchlocal.flows.photogallery.GalleryActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:label="@string/title_gallery" android:name="com.match.matchlocal.flows.photogallery.PhotoGalleryActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:label="@string/title_activity_my_profile" android:launchMode="singleTask" android:name="com.match.matchlocal.flows.myprofile.MyProfileG4Activity" android:parentActivityName="com.match.matchlocal.flows.landing.LandingActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.landing.LandingActivity"/>
+        </activity>
+        <activity android:label="@string/batch_upload_appbar_title" android:launchMode="singleTask" android:name="com.match.matchlocal.flows.photoupload.BatchPhotoUploadEditorActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.match.matchlocal.flows.edit.EditProfileActivity" android:parentActivityName="com.match.matchlocal.flows.edit.EditProfileActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.edit.EditProfileActivity"/>
+        </activity>
+        <activity android:label="Edit Self Gender" android:name="com.match.matchlocal.flows.edit.self.gender.EditSelfGenderActivity" android:parentActivityName="com.match.matchlocal.flows.edit.EditProfileActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.edit.EditProfileActivity"/>
+        </activity>
+        <activity android:label="Edit Seek Gender" android:name="com.match.matchlocal.flows.edit.seek.gender.EditSeekGenderActivity" android:parentActivityName="com.match.matchlocal.flows.edit.EditProfileActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.edit.EditProfileActivity"/>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.match.matchlocal.flows.edit.EditSeekingProfileActivity" android:parentActivityName="com.match.matchlocal.flows.edit.EditProfileActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.edit.EditSeekingProfileActivity"/>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.match.matchlocal.flows.edit.EditSeekingUserPreferencesActivity" android:parentActivityName="com.match.matchlocal.flows.edit.EditProfileActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.edit.EditProfileActivity"/>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.match.matchlocal.flows.matchvideo.MatchVideoContentHubActivity" android:parentActivityName="com.match.matchlocal.flows.matchvideo.MatchVideoContentHubActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.match.matchlocal.flows.matchvideo.MatchVideoHomeActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.match.matchlocal.flows.edit.QuestionAnswerActivity" android:parentActivityName="com.match.matchlocal.flows.edit.QuestionAnswerActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.edit.QuestionAnswerActivity"/>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.match.matchlocal.flows.edit.seek.EditSeekAnswersActivity" android:parentActivityName="com.match.matchlocal.flows.edit.seek.EditSeekAnswersActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.edit.seek.EditSeekAnswersActivity"/>
+        </activity>
+        <activity android:name="com.match.matchlocal.flows.edit.photos.ManagePhotosActivity" android:parentActivityName="com.match.matchlocal.flows.edit.EditProfileActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.edit.EditProfileActivity"/>
+        </activity>
+        <activity android:name="com.match.matchlocal.webview.URLActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.match.matchlocal.webview.WebViewActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:label="@string/app_name" android:name="com.facebook.FacebookActivity" android:theme="@style/com_facebook_activity_theme"/>
+        <activity android:label="@string/title_activity_subscription" android:name="com.match.matchlocal.flows.subscription.SubscriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.match.matchlocal.flows.edit.DatingPreferencesActivity" android:parentActivityName="com.match.matchlocal.flows.edit.EditProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.match.matchlocal.flows.edit.DatingPreferenceSelectionActivity" android:parentActivityName="com.match.matchlocal.flows.edit.DatingPreferencesActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_topspot_purchase" android:launchMode="singleTask" android:name="com.match.matchlocal.flows.topspot.TopSpotPurchaseActivity" android:parentActivityName="com.match.matchlocal.flows.landing.LandingActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.landing.LandingActivity"/>
+        </activity>
+        <activity android:label="@string/title_activity_settings" android:name="com.match.matchlocal.flows.settings.SettingsActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/title_activity_settings" android:name="com.match.matchlocal.flows.lara.LaraRegistrationActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme" android:windowSoftInputMode="adjustResize"/>
+        <activity android:label="@string/text_manage_account" android:name="com.match.matchlocal.flows.settings.ManageAccountActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/manage_edit_name" android:name="com.match.matchlocal.flows.settings.ManageSettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_private_mode_settings" android:name="com.match.matchlocal.flows.settings.PrivateModeSettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.match.matchlocal.flows.settings.ManageSubscriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_bucket_list" android:name="com.match.matchlocal.flows.bucketlist.BucketListActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_facebook_albums" android:launchMode="singleTop" android:name="com.match.matchlocal.flows.facebook.FacebookPhotoAlbumsActivity" android:parentActivityName="com.match.matchlocal.flows.myprofile.MyProfileG4Activity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.myprofile.MyProfileG4Activity"/>
+        </activity>
+        <activity android:label="@string/title_facebook_album_photos" android:name="com.match.matchlocal.flows.facebook.FacebookAlbumPhotosActivity" android:parentActivityName="com.match.matchlocal.flows.facebook.FacebookPhotoAlbumsActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.match.matchlocal.flows.facebook.FacebookPhotoAlbumsActivity"/>
+        </activity>
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.match.matchlocal.flows.matchvideo.exoplayer.MatchVideoPlayerActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_safety_tips" android:name="com.match.matchlocal.flows.settings.SafetyTips" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/title_activity_cookie_policy" android:name="com.match.matchlocal.flows.settings.CookiePolicy" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/title_activity_help" android:name="com.match.matchlocal.flows.help.HelpActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/forgot_email" android:name="com.match.matchlocal.flows.login.viewmodel.ForgotEmailActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/menu_match_events" android:name="com.match.matchlocal.flows.matchevents.MatchEventsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_privacy_policy" android:name="com.match.matchlocal.flows.settings.MatchPrivacyPolicyActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/settings_community_guidelines" android:name="com.match.matchlocal.flows.settings.CommunityGuidelinesActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/title_activity_privacy_policy" android:name="com.match.matchlocal.flows.settings.MatchTermsOfUseActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/title_activity_privacy_policy" android:name="com.match.matchlocal.flows.settings.MatchContactUsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_rffpurchase" android:name="com.match.matchlocal.flows.subscription.RFFPurchaseActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_private_mode" android:name="com.match.matchlocal.flows.subscription.PrivateModePurchaseActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_subscription" android:name="com.match.matchlocal.flows.subscription.UpgradeSixMonthsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name="com.match.matchlocal.flows.abtests.ui.AbTestsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name="com.match.matchlocal.flows.experiment.v2.FeaturesActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/me_profileviews_title" android:name="com.match.matchlocal.flows.whoviewedme.ViewedMeActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/title_missed_connection" android:name="com.match.matchlocal.flows.missedconnection.NearbyActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="@string/title_missed_connection" android:name="com.match.matchlocal.flows.edit.seek.EditQuestionAnswerActivity" android:parentActivityName="com.match.matchlocal.flows.edit.seek.EditQuestionAnswerActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/sub_benefits_toolbar_title_premium" android:name="com.match.matchlocal.flows.subscriptionbenefits.SubscriptionBenefitsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_phone_verification" android:name="com.match.matchlocal.flows.matchtalk.PhoneVerificationActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="@string/title_activity_phone_verification" android:name="com.match.matchlocal.flows.sms2fa.SMSVerificationActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:launchMode="singleTop" android:name="com.match.matchlocal.flows.npssurvey.NpsWizardActivity" android:theme="@style/TranslucentNps"/>
+        <activity android:launchMode="singleTop" android:name="com.match.matchlocal.flows.matchvideo.MatchVideoSurveyActivity" android:theme="@style/TranslucentNps"/>
+        <activity android:name="com.match.matchlocal.flows.mutuallikes.likesyou.stack.MutualLikesYouStackActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:name="com.gun0912.tedpicker.ImagePickerActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.match.matchlocal.flows.messaging2.thread.MessagingThreadActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:name="com.match.matchlocal.flows.subscription.MatchTalkPurchaseActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:name="com.match.matchlocal.flows.matchtalk.MatchTalkActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:name="com.match.matchlocal.flows.edit.IdentificationPhotoActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="@string/title_activity_smart_filter_settings" android:name="com.match.matchlocal.flows.messaging.smartfilter.SmartFilterSettingsActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:label="@string/title_activity_smart_filter_settings" android:name="com.match.matchlocal.flows.messaging.smartfilter.ChoiceSelectActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="Dummy Activity" android:name="com.match.matchlocal.flows.newonboarding.profile.EditPhotoActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Date Coaching" android:launchMode="singleTop" android:name="com.match.matchlocal.flows.coaching.messages.CoachingMessagesActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="Get Super Likes" android:name="com.match.matchlocal.flows.subscription.superlikes.SuperLikesPurchaseActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Purchase Rewinds" android:name="com.match.matchlocal.flows.newdiscover.rewind.RewindPurchaseActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Purchase Coaching Sessions" android:name="com.match.matchlocal.flows.coaching.purchase.web.CoachingPurchaseSessionsActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Coaching Purchase Confirmation" android:name="com.match.matchlocal.flows.coaching.purchase.confirmation.CoachingPurchaseConfirmationActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Coaching Dashboard" android:name="com.match.matchlocal.flows.coaching.dashboard.CoachingDashboardActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Cancel Coaching Subscription" android:name="com.match.matchlocal.flows.coaching.cancel.CoachingCancelSubscriptionActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Coaching Free Call Promo" android:name="com.match.matchlocal.flows.coaching.promo.CoachingPromoActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Date check-in" android:name="com.match.matchlocal.flows.checkin.DateCheckInActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Profile Review" android:name="com.match.matchlocal.flows.profilereview.ui.ProfileReviewActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:label="Email notifications" android:name="com.match.matchlocal.flows.settings.notification.email.EmailNotificationSettingsActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="Push notifications" android:name="com.match.matchlocal.flows.settings.notification.push.PushNotificationSettingsActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="Video Date" android:name="com.match.matchlocal.flows.videodate.VideoDateActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:label="Video Date" android:launchMode="singleInstance" android:name="com.match.matchlocal.flows.videodate.VideoDatePIPActivity" android:noHistory="true" android:screenOrientation="portrait" android:supportsPictureInPicture="true" android:taskAffinity=".flows.videodate.VideoDatePIPActivity" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="Experts Quiz" android:name="com.match.matchlocal.flows.experts.questions.ExpertsQuestionsActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:label="Experts" android:name="com.match.matchlocal.flows.experts.conversation.ExpertConversationActivity" android:screenOrientation="portrait" android:theme="@style/WhiteStatusbarTheme"/>
+        <activity android:label="Collins Registration" android:name="com.match.matchlocal.flows.collins.CollinsSignUpActivity" android:screenOrientation="portrait" android:theme="@style/CollinsSignUpTheme" android:windowSoftInputMode="adjustResize"/>
+        <activity android:label="Collins Crop" android:name="com.match.matchlocal.flows.collins.onboarding.self.photos.crop.CollinsPhotoCropActivity" android:screenOrientation="portrait"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.AutoLogAppEventsEnabled" android:value="false"/>
+        <meta-data android:name="com.facebook.sdk.AutoInitEnabled" android:value="false"/>
+        <meta-data android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled" android:value="false"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.match.revision.number" android:value="0"/>
+        <meta-data android:name="net.singular.api_key" android:value="d3e6f2c2270ef4e14e22672032f4e608"/>
+        <meta-data android:name="net.singular.app_id" android:value="com.match.android.matchlocal"/>
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_match_notifications"/>
+        <provider android:authorities="com.match.android.matchmobile.provider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+        </provider>
+        <receiver android:exported="true" android:name="com.appsflyer.MultipleInstallBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.match.matchlocal.appbase.InstallReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.match.matchlocal.pushnotifications.UserStatusReceiver"/>
+        <receiver android:exported="false" android:name="com.match.matchlocal.pushnotifications.DismissVibeCheckNotificationReceiver"/>
+        <receiver android:exported="false" android:name="com.match.matchlocal.pushnotifications.VibeCheckHeadsUpNotificationReceiver"/>
+        <receiver android:exported="true" android:name="com.match.matchlocal.flows.missedconnection.MissedConnectionAlarmReceiver"/>
+        <receiver android:exported="false" android:name="com.match.matchlocal.appbase.CropEventReceiver">
+            <intent-filter>
+                <action android:name="com.soundcloud.android.crop.ROTATE_LEFT_EVENT"/>
+                <action android:name="com.soundcloud.android.crop.ROTATE_RIGHT_EVENT"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.match.matchlocal.services.PhotoUploadService"/>
+        <service android:exported="false" android:name="com.match.matchlocal.services.PhotoUploadServiceV2"/>
+        <service android:exported="false" android:name="com.match.matchlocal.pushnotifications.VibeCheckHeadsUpNotificationService"/>
+        <service android:exported="false" android:name="com.match.matchlocal.flows.videodate.notification.VideoDateOngoingNotificationService"/>
+        <service android:exported="false" android:name="com.match.matchlocal.services.ScreenOffService"/>
+        <service android:name="com.match.matchlocal.pushnotifications.firebase.MatchFirebasePushNotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="3.0.2"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:name="com.android.billingclient.api.ProxyBillingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <provider android:authorities="com.match.android.matchmobile.com.squareup.picasso" android:exported="false" android:name="com.squareup.picasso.PicassoProvider"/>
+        <activity android:name="com.facebook.CustomTabMainActivity"/>
+        <activity android:name="com.facebook.CustomTabActivity"/>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
+        <service android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <provider android:authorities="com.match.android.matchmobile.FacebookInitProvider" android:exported="false" android:name="com.facebook.internal.FacebookInitProvider"/>
+        <receiver android:exported="false" android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.facebook.CampaignTrackingReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.match.android.matchmobile.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="com.match.android.matchmobile.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+    </application>
+</manifest>
