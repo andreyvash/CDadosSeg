@@ -10,27 +10,28 @@ def main():
     print("===================\n")
     print("Permissões por APK\n")
     print("===================\n\n")
+    permissions_apk = {}
     for filename in glob.glob(os.path.join(path, '*.xml')):
 
         manifest = open(filename, 'rt')
         root = ET.parse(manifest).getroot()
 
+        permissions_apk[filename] = set()
+        
         tags = []
         for elem in root.iter('uses-permission'):
             tags.append(elem.attrib)
 
-        print(filename.split("/")[1] + ": ", end='')
         permissions = []
         for i in tags:
             aux = re.split(r'[.\'}]',str(i))
             permissions.append(aux[-3:-2])
-        print("[", end='')
         for i in permissions:
-            if(i == permissions[len(permissions)-1]):
-                print(re.split(r'[\[\]]',str(i))[1]+ "]")
-            else:
-                print(re.split(r'[\[\]]',str(i))[1] + ", ", end='')
-        print()
+            permissions_apk[filename].add(re.split(r'[\[\]]',str(i))[1])
+
+
+    for k,i in permissions_apk.items():
+        print(k + ': ' +  str(list(i)).replace("\"", "") + '\n\n')
 
 if __name__ == "__main__":
     main()
